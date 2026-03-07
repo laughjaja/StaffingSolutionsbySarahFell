@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+    :root { --brand-dark: #2f3137; --brand-accent: #fbbd0c; }
+    body { font-family: 'Inter', sans-serif; background-color: #f4f4f5; color: var(--brand-dark); }
+    .page { background: white; max-width: 600px; margin: 0 auto; }
+    .accent-bg { background-color: var(--brand-accent); }
+    .brand-bg { background-color: var(--brand-dark); }
+    .brand-text { color: var(--brand-dark); }
+    .btn-primary { background-color: var(--brand-accent); color: var(--brand-dark); font-weight: 900; transition: all 0.2s; border: 2px solid var(--brand-accent); }
+    .btn-primary:hover { background-color: transparent; color: var(--brand-accent); }
+    .sidebar-accent { border-left: 4px solid var(--brand-accent); }
+  </style>
+</head>
+<body class="py-8 px-4">
+
+<div class="page shadow-2xl rounded-lg overflow-hidden">
+  <!-- HEADER -->
+  <header class="p-5 flex justify-between items-center bg-white border-b border-gray-100">
+    <img src="https://raw.githubusercontent.com/laughjaja/SF-Newsletter/main/TT%20Small%20Logo.png"
+         alt="Top Tier Talent Group logo"
+         class="h-10 w-auto block">
+    <div class="text-right">
+      <p class="text-[10px] font-bold uppercase tracking-widest text-gray-400">Issue 01 // Mar 2026</p>
+      <p class="text-xs font-bold brand-text">Manufacturing Brief</p>
+    </div>
+  </header>
+
+  <!-- HERO BANNER -->
+  <section>
+    <img src="https://raw.githubusercontent.com/laughjaja/SF-Newsletter/main/Banner.png" alt="Market Intelligence" class="w-full h-auto">
+  </section>
+
+  <!-- DIRECTIVE INTRO -->
+  <section class="p-8">
+    <div class="flex flex-col sm:flex-row gap-8 items-start">
+      <div class="flex-1">
+        <h2 class="text-3xl font-black leading-tight mb-4 uppercase tracking-tighter brand-text italic">Downtime is a Choice.</h2>
+        <p class="text-sm leading-relaxed text-gray-600 mb-6">
+          Vacant maintenance roles don't just sit there—they bleed your P&L. We specialize in the technical roles internal HR teams and generalist agencies consistently miss.
+        </p>
+        <div class="sidebar-accent pl-4 py-1">
+          <p class="text-[10px] font-bold uppercase text-gray-400">Market Reality</p>
+          <p class="text-sm font-bold italic">If you're waiting for Red Seal talent to apply, you've already lost.</p>
+        </div>
+      </div>
+      <div class="w-32 flex-shrink-0 mx-auto sm:mx-0">
+        <img src="https://raw.githubusercontent.com/laughjaja/SF-Newsletter/main/Sarah%20Fell-image.png" alt="Sarah Fell" class="rounded-lg shadow-lg grayscale hover:grayscale-0 transition duration-300">
+      </div>
+    </div>
+  </section>
+
+  <!-- DIVIDER -->
+  <section class="px-8 pb-6">
+    <p class="text-[10px] font-black uppercase tracking-[0.2em] brand-text mb-2">Market Intelligence</p>
+    <img src="https://raw.githubusercontent.com/laughjaja/SF-Newsletter/main/Banner.png" alt="Divider" class="w-full h-12 object-cover rounded-lg opacity-[0.85]">
+  </section>
+
+  <!-- LIVE TALENT SPOTLIGHT -->
+  <section class="px-8 pb-8">
+    <div class="flex items-center gap-2 mb-6 border-b pb-2">
+      <h3 class="text-[11px] font-black uppercase tracking-[0.2em] text-gray-400">Active Candidate Bench</h3>
+      <div class="h-1.5 w-1.5 rounded-full bg-red-500 animate-pulse"></div>
+    </div>
+
+    <div class="mb-8">
+      <div class="flex justify-between items-center mb-1">
+        <h4 class="font-bold text-sm uppercase tracking-tight">Lead Automation Tech // Food Pack</h4>
+        <span class="text-[9px] font-black accent-bg px-2 py-0.5 rounded">AVAILABLE</span>
+      </div>
+      <p class="text-[11px] text-gray-500 mb-2 font-bold uppercase">GTA West | Dual Ticketed (Elec + Mill)</p>
+      <p class="text-xs leading-relaxed text-gray-700">Expert in Siemens S7 and Allen Bradley. 12 years in high-speed bottling. Leadership track. $110k+ base.</p>
+    </div>
+
+    <div class="mb-4">
+      <div class="flex justify-between items-center mb-1">
+        <h4 class="font-bold text-sm uppercase tracking-tight">Maintenance Manager // Heavy Mfg</h4>
+        <span class="text-[9px] font-black bg-gray-100 px-2 py-0.5 rounded">VETTED</span>
+      </div>
+      <p class="text-[11px] text-gray-500 mb-2 font-bold uppercase">Windsor-Essex | Tier 1 Auto</p>
+      <p class="text-xs leading-relaxed text-gray-700">Managed unionized teams of 30+. Specialist in predictive maintenance and TPM implementation.</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="brand-bg p-10 text-center">
+    <h3 class="text-white text-lg font-bold mb-2">Want current salary benchmarks for your plant roles?</h3>
+    <p class="text-gray-400 text-xs mb-8">Get the numbers competitors are using to steal your talent.</p>
+
+    <a href="mailto:sarahfell@toptiertalentgroup.com?subject=Salary%20Benchmarks%20Request" class="btn-primary inline-block px-10 py-4 rounded uppercase text-xs tracking-widest">
+      Get Salary Benchmarks
+    </a>
+
+    <div class="mt-10 pt-6 border-t border-gray-600 flex justify-center gap-6 text-[10px] font-bold text-gray-500 uppercase tracking-widest">
+      <a href="https://toptiertalentgroup.com" target="_blank" class="hover:text-[#fbbd0c] transition-colors">Website</a>
+      <a href="mailto:sarahfell@toptiertalentgroup.com" class="hover:text-[#fbbd0c] transition-colors">Contact</a>
+    </div>
+  </section>
+</div>
+
+<div class="text-center mt-6 text-[10px] text-gray-400 uppercase tracking-widest">
+  Top Tier Talent Group © 2026 // No Fluff. Just Placements.
+</div>
+
+</body>
+</html>
