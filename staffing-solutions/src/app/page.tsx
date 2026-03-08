@@ -211,70 +211,58 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* 4. Calendly Booking Section */}
+      {/* 4. Contact Section - Horizontal Layout */}
       <motion.section
         id="book"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-10%" }}
         transition={{ duration: 0.8 }}
-        className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-[90rem] mx-auto w-full"
+        className="py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-[#F7F7F7]"
       >
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          <div>
-            <h2 className="text-4xl md:text-6xl font-medium tracking-tighter mb-8 leading-tight">
+        <div className="max-w-[90rem] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+
+          {/* Left: Title + blurb */}
+          <div className="lg:col-span-4">
+            <h2 className="text-3xl md:text-4xl font-medium tracking-tighter leading-tight mb-4">
               Let's craft your <br />
               <span className="italic font-serif text-gray-400">hiring strategy.</span>
             </h2>
-            <div className="w-12 h-[2px] bg-[var(--color-dark)] mb-8"></div>
-            <p className="text-xl text-gray-600 font-light leading-relaxed mb-12 max-w-lg">
-              Send us a message to connect. We’ll discuss your current bottlenecks, high-volume needs, and how our customized process can deliver the reliable talent you've been missing.
+            <div className="w-10 h-[2px] bg-[var(--color-primary)] mb-4"></div>
+            <p className="text-sm text-gray-500 font-light leading-relaxed">
+              Send us a message and we'll discuss your current bottlenecks, high-volume needs, and how we can deliver the talent you've been missing.
             </p>
-
-
           </div>
 
-          {/* Contact Form Container (Replaces Calendly for this iteration as requested by the form details) */}
-          <div className="bg-white border border-gray-200 p-8 md:p-12 shadow-sm relative z-10">
-            <h3 className="text-3xl font-medium mb-4 text-center">Get In Touch</h3>
-            <p className="text-gray-500 mb-8 text-center font-light">Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
-
-            <form className="space-y-6">
-              <div>
-                <label className="block text-sm font-medium mb-2">Full Name <span className="text-red-500">*</span></label>
-                <input type="text" placeholder="Enter your full name" className="w-full border border-gray-300 rounded px-4 py-3 focus:outline-none focus:border-[var(--color-dark)] focus:ring-1 focus:ring-[var(--color-dark)] bg-gray-50" required />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium mb-2">Email Address <span className="text-red-500">*</span></label>
-                <input type="email" placeholder="Enter your email address" className="w-full border border-gray-300 rounded px-4 py-3 focus:outline-none focus:border-[var(--color-dark)] focus:ring-1 focus:ring-[var(--color-dark)] bg-gray-50" required />
-                <p className="text-xs text-gray-400 mt-2 italic">We'll never share your email with anyone else.</p>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium mb-2">Phone Number <span className="text-red-500">*</span></label>
-                <input type="tel" placeholder="(555) 123.4567" className="w-full border border-gray-300 rounded px-4 py-3 focus:outline-none focus:border-[var(--color-dark)] focus:ring-1 focus:ring-[var(--color-dark)] bg-gray-50" required />
-                <p className="text-xs text-gray-400 mt-2 italic">Format: (555) 123.4567</p>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium mb-2">Subject <span className="text-red-500">*</span></label>
-                <input type="text" placeholder="What is this regarding?" className="w-full border border-gray-300 rounded px-4 py-3 focus:outline-none focus:border-[var(--color-dark)] focus:ring-1 focus:ring-[var(--color-dark)] bg-gray-50" required />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium mb-2">Your Message</label>
-                <textarea placeholder="Please tell us how we can help you..." rows={4} className="w-full border border-gray-300 rounded px-4 py-3 focus:outline-none focus:border-[var(--color-dark)] focus:ring-1 focus:ring-[var(--color-dark)] bg-gray-50"></textarea>
-              </div>
-
-              <div className="pt-4 text-center">
-                <p className="text-xs text-gray-500 italic mb-6">Your information is secure and will only be used to contact you about your inquiry.</p>
-                <button type="submit" className="w-full bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] text-white font-bold tracking-wide uppercase py-4 rounded transition-colors text-sm">
-                  Send Message
-                </button>
-              </div>
-            </form>
-          </div>
+          {/* Right: Compact horizontal form */}
+          <form className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-xs font-medium mb-1 uppercase tracking-widest text-gray-500">Full Name <span className="text-red-400">*</span></label>
+              <input type="text" placeholder="Jane Smith" className="w-full border border-gray-300 px-3 py-2.5 text-sm focus:outline-none focus:border-[var(--color-primary)] bg-white" required />
+            </div>
+            <div>
+              <label className="block text-xs font-medium mb-1 uppercase tracking-widest text-gray-500">Email <span className="text-red-400">*</span></label>
+              <input type="email" placeholder="jane@company.com" className="w-full border border-gray-300 px-3 py-2.5 text-sm focus:outline-none focus:border-[var(--color-primary)] bg-white" required />
+            </div>
+            <div>
+              <label className="block text-xs font-medium mb-1 uppercase tracking-widest text-gray-500">Phone <span className="text-red-400">*</span></label>
+              <input type="tel" placeholder="(555) 123.4567" className="w-full border border-gray-300 px-3 py-2.5 text-sm focus:outline-none focus:border-[var(--color-primary)] bg-white" required />
+            </div>
+            <div>
+              <label className="block text-xs font-medium mb-1 uppercase tracking-widest text-gray-500">Subject <span className="text-red-400">*</span></label>
+              <input type="text" placeholder="What is this regarding?" className="w-full border border-gray-300 px-3 py-2.5 text-sm focus:outline-none focus:border-[var(--color-primary)] bg-white" required />
+            </div>
+            <div className="sm:col-span-2">
+              <label className="block text-xs font-medium mb-1 uppercase tracking-widest text-gray-500">Message</label>
+              <textarea placeholder="Tell us how we can help..." rows={3} className="w-full border border-gray-300 px-3 py-2.5 text-sm focus:outline-none focus:border-[var(--color-primary)] bg-white resize-none"></textarea>
+            </div>
+            <div className="sm:col-span-2 flex items-center justify-between gap-6 pt-2">
+              <p className="text-xs text-gray-400 italic">Your information is secure and will only be used to contact you.</p>
+              <button type="submit" className="shrink-0 bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] text-white font-semibold tracking-widest uppercase px-8 py-3 text-xs transition-colors">
+                Send Message
+              </button>
+            </div>
+          </form>
 
         </div>
       </motion.section>
