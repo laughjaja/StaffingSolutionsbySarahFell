@@ -126,9 +126,9 @@ export default function Home() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-10%" }}
         transition={{ duration: 0.8 }}
-        className="py-10 md:py-12 bg-[#F7F7F7] text-[var(--color-dark)] px-4 sm:px-6 lg:px-8"
+        className="py-10 md:py-12 bg-[#F7F7F7] text-[var(--color-dark)] px-6"
       >
-        <div className="max-w-[90rem] mx-auto w-full">
+        <div className="max-w-[1200px] mx-auto w-full">
           <div className="mb-6 md:mb-8 flex flex-col md:flex-row justify-between items-start md:items-end">
             <h2 className="text-4xl md:text-6xl font-medium tracking-tighter">Our Expertise</h2>
             <p className="text-gray-500 font-mono text-sm uppercase tracking-widest mt-4 md:mt-0">Specialized Solutions</p>
@@ -186,9 +186,9 @@ export default function Home() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-10%" }}
         transition={{ duration: 0.8 }}
-        className="py-10 md:py-12 bg-[#1A1A1A] text-white px-4 sm:px-6 lg:px-8"
+        className="py-10 md:py-12 bg-[#1A1A1A] text-white px-6"
       >
-        <div className="max-w-5xl mx-auto w-full">
+        <div className="max-w-[1200px] mx-auto w-full">
           <div className="mb-10 md:mb-12 flex flex-col md:flex-row justify-between items-start md:items-center">
             <h2 className="text-4xl md:text-5xl italic font-serif text-[var(--color-primary)]">6-Step Process</h2>
             <p className="text-gray-400 font-mono text-[10px] sm:text-xs uppercase tracking-widest mt-6 md:mt-0 max-w-xs leading-loose">
@@ -233,9 +233,9 @@ export default function Home() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-10%" }}
         transition={{ duration: 0.8 }}
-        className="py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-[#F7F7F7]"
+        className="py-12 md:py-16 px-6 bg-[#F7F7F7]"
       >
-        <div className="max-w-5xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="max-w-[1200px] mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
           {/* Left: Title + blurb */}
           <div>
