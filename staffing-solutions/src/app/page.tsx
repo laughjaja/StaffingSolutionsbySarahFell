@@ -196,16 +196,15 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-10%" }}
                 transition={{ duration: 0.6, delay: idx * 0.15, ease: "easeOut" }}
-                whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                className="flex flex-col group cursor-default bg-[#222] p-8 -m-8 rounded border border-transparent hover:border-white/5 transition-all shadow-none hover:shadow-2xl hover:shadow-[var(--color-primary)]/10"
+                className="flex flex-col group cursor-default pt-2"
               >
                 <div className="flex items-center mb-6">
-                  <span className="text-4xl font-light text-[var(--color-primary)] mr-4 leading-none group-hover:scale-110 transition-transform origin-bottom-left duration-300">{step.num}</span>
-                  <div className="h-[1px] w-full bg-white/10 relative overflow-hidden">
-                    <div className="absolute top-0 left-0 h-full w-full bg-[var(--color-primary)] -translate-x-[101%] group-hover:translate-x-0 transition-transform duration-500 ease-in-out"></div>
+                  <span className="text-4xl font-light text-[var(--color-primary)] mr-4 leading-none transition-colors duration-300">{step.num}</span>
+                  <div className="h-[1px] w-full bg-white/10 relative">
+                    <div className="absolute top-0 left-0 h-full w-0 group-hover:w-full bg-[var(--color-primary)] transition-all duration-500 ease-out"></div>
                   </div>
                 </div>
-                <p className="text-gray-400 font-light text-xs sm:text-sm group-hover:text-gray-200 transition-colors duration-300">{step.desc}</p>
+                <p className="text-gray-400 font-light text-xs sm:text-sm group-hover:text-white transition-colors duration-300">{step.desc}</p>
               </motion.div>
             ))}
           </div>
