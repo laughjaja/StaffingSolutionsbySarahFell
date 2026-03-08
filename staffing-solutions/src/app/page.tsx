@@ -87,7 +87,7 @@ export default function Home() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-10%" }}
         transition={{ duration: 0.8 }}
-        className="py-20 px-6 w-full border-b border-gray-800 bg-[#1A1A1A]"
+        className="py-12 md:py-20 px-6 w-full border-b border-gray-800 bg-[#1A1A1A]"
       >
         <div className="max-w-[1200px] mx-auto w-full text-white">
           {/* Desktop: 2 col | Mobile: stacked (headline → images → text → CTA) */}
