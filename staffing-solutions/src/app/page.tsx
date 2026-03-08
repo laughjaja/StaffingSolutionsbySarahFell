@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Briefcase, Target, Search, ArrowRight } from 'lucide-react';
 
 const InlineWidget = dynamic(() => import('react-calendly').then(mod => mod.InlineWidget), {
@@ -21,52 +21,56 @@ const CAROUSEL_IMAGES = [
 
 function HeroImageStack() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(1); // 1 = forward, -1 = backward
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
     const timer = setInterval(() => {
+      setDirection(1);
       setCurrentIndex((prev) => (prev + 1) % CAROUSEL_IMAGES.length);
-    }, 3500);
+    }, 3800);
     return () => clearInterval(timer);
   }, []);
 
-  // Show 3 images: previous (left, muted), current (center, full), next (right, muted)
-  const getVisible = () => {
-    const len = CAROUSEL_IMAGES.length;
-    return [
-      { src: CAROUSEL_IMAGES[(currentIndex - 1 + len) % len], pos: 'left' },
-      { src: CAROUSEL_IMAGES[currentIndex], pos: 'center' },
-      { src: CAROUSEL_IMAGES[(currentIndex + 1) % len], pos: 'right' },
-    ];
-  };
-
   if (!mounted) return <div className="w-full h-48 bg-white/5 rounded mb-8" />;
 
-  const visible = getVisible();
+  const slideVariants = {
+    enter: (dir: number) => ({ x: dir > 0 ? '100%' : '-100%', opacity: 0 }),
+    center: { x: '0%', opacity: 1 },
+    exit: (dir: number) => ({ x: dir > 0 ? '-100%' : '100%', opacity: 0 }),
+  };
 
   return (
-    <div className="w-full mb-8 flex items-end justify-start gap-2 h-52">
-      {visible.map(({ src, pos }) => (
+    <div className="w-full mb-8 relative overflow-hidden rounded" style={{ height: '200px' }}>
+      <AnimatePresence initial={false} custom={direction} mode="popLayout">
         <motion.div
-          key={src + pos}
-          layout
-          initial={{ opacity: 0 }}
-          animate={{
-            opacity: pos === 'center' ? 1 : 0.35,
-            scale: pos === 'center' ? 1 : 0.88,
-          }}
-          transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
-          className="relative overflow-hidden rounded flex-shrink-0"
-          style={{
-            width: pos === 'center' ? '48%' : '24%',
-            height: pos === 'center' ? '208px' : '168px',
-          }}
+          key={currentIndex}
+          custom={direction}
+          variants={slideVariants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          transition={{ duration: 0.55, ease: [0.4, 0, 0.2, 1] }}
+          className="absolute inset-0 w-full h-full"
         >
-          <img src={src} className="w-full h-full object-cover" alt="Industrial" />
-          {pos !== 'center' && <div className="absolute inset-0 bg-[#1A1A1A]/60" />}
+          <img
+            src={CAROUSEL_IMAGES[currentIndex]}
+            className="w-full h-full object-cover"
+            alt="Industrial Manufacturing"
+          />
         </motion.div>
-      ))}
+      </AnimatePresence>
+      {/* Dot indicators */}
+      <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-1.5 z-10">
+        {CAROUSEL_IMAGES.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => { setDirection(i > currentIndex ? 1 : -1); setCurrentIndex(i); }}
+            className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${i === currentIndex ? 'bg-[var(--color-primary)] w-4' : 'bg-white/40'}`}
+          />
+        ))}
+      </div>
     </div>
   );
 }
@@ -87,7 +91,7 @@ export default function Home() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-10%" }}
         transition={{ duration: 0.8 }}
-        className="py-12 md:py-20 px-6 w-full border-b border-gray-800 bg-[#1A1A1A]"
+        className="py-12 md:py-20 px-4 w-full border-b border-gray-800 bg-[#1A1A1A]"
       >
         <div className="max-w-[1200px] mx-auto w-full text-white">
           {/* Desktop: 2 col | Mobile: stacked (headline → images → text → CTA) */}
