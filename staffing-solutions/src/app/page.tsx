@@ -12,10 +12,11 @@ const InlineWidget = dynamic(() => import('react-calendly').then(mod => mod.Inli
 });
 
 const CAROUSEL_IMAGES = [
-  "https://images.unsplash.com/photo-1541888081295-8ab63428d052?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1620050854483-e18d6e382d55?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1565439387431-c035ca2d98dc?q=80&w=800&auto=format&fit=crop"
+  "/images/download.jpg",
+  "/images/download-1.jpg",
+  "/images/download-2.jpg",
+  "/images/download-3.jpg",
+  "/images/download-4.jpg"
 ];
 
 function HeroCarousel() {
@@ -79,7 +80,7 @@ export default function Home() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-10%" }}
         transition={{ duration: 0.8 }}
-        className="pt-32 pb-24 md:pt-48 md:pb-40 px-4 sm:px-6 lg:px-8 w-full border-b border-gray-200 bg-[#1A1A1A]"
+        className="pt-24 pb-16 md:pt-32 md:pb-24 px-4 sm:px-6 lg:px-8 w-full border-b border-gray-200 bg-[#1A1A1A]"
       >
         <div className="max-w-[90rem] mx-auto w-full text-white">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-end">
@@ -110,15 +111,15 @@ export default function Home() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-10%" }}
         transition={{ duration: 0.8 }}
-        className="py-24 bg-[#F7F7F7] text-[var(--color-dark)] px-4 sm:px-6 lg:px-8"
+        className="py-10 md:py-12 bg-[#F7F7F7] text-[var(--color-dark)] px-4 sm:px-6 lg:px-8"
       >
         <div className="max-w-[90rem] mx-auto w-full">
-          <div className="mb-16 md:mb-24 flex flex-col md:flex-row justify-between items-start md:items-end">
+          <div className="mb-6 md:mb-8 flex flex-col md:flex-row justify-between items-start md:items-end">
             <h2 className="text-4xl md:text-6xl font-medium tracking-tighter">Our Expertise</h2>
             <p className="text-gray-500 font-mono text-sm uppercase tracking-widest mt-4 md:mt-0">Specialized Solutions</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-12 gap-x-8 pt-8 border-t border-[var(--color-primary)]">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-10 gap-x-8 pt-6 border-t border-[var(--color-primary)]">
             {[
               {
                 title: 'Direct Hire',
@@ -170,10 +171,10 @@ export default function Home() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-10%" }}
         transition={{ duration: 0.8 }}
-        className="py-16 md:py-20 bg-[#1A1A1A] text-white px-4 sm:px-6 lg:px-8"
+        className="py-10 md:py-12 bg-[#1A1A1A] text-white px-4 sm:px-6 lg:px-8"
       >
         <div className="max-w-5xl mx-auto w-full">
-          <div className="mb-16 flex flex-col md:flex-row justify-between items-start md:items-center">
+          <div className="mb-10 md:mb-12 flex flex-col md:flex-row justify-between items-start md:items-center">
             <h2 className="text-4xl md:text-5xl italic font-serif text-[var(--color-primary)]">6-Step Process</h2>
             <p className="text-gray-400 font-mono text-[10px] sm:text-xs uppercase tracking-widest mt-6 md:mt-0 max-w-xs leading-loose">
               A verified methodology to secure high-retention talent faster.
@@ -218,7 +219,7 @@ export default function Home() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-10%" }}
         transition={{ duration: 0.8 }}
-        className="py-24 md:py-32 px-4 sm:px-6 lg:px-8 max-w-[90rem] mx-auto w-full"
+        className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-[90rem] mx-auto w-full"
       >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           <div>
