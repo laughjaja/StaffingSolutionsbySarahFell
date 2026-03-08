@@ -19,7 +19,7 @@ const CAROUSEL_IMAGES = [
   "/images/download-4.jpg"
 ];
 
-function HeroCarousel() {
+function HeroImageStack() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [mounted, setMounted] = useState(false);
 
@@ -31,35 +31,42 @@ function HeroCarousel() {
     return () => clearInterval(timer);
   }, []);
 
-  if (!mounted) return <div className="h-32 md:h-36 w-full mb-8 lg:mb-12"></div>;
+  // Show 3 images: previous (left, muted), current (center, full), next (right, muted)
+  const getVisible = () => {
+    const len = CAROUSEL_IMAGES.length;
+    return [
+      { src: CAROUSEL_IMAGES[(currentIndex - 1 + len) % len], pos: 'left' },
+      { src: CAROUSEL_IMAGES[currentIndex], pos: 'center' },
+      { src: CAROUSEL_IMAGES[(currentIndex + 1) % len], pos: 'right' },
+    ];
+  };
+
+  if (!mounted) return <div className="w-full h-48 bg-white/5 rounded mb-8" />;
+
+  const visible = getVisible();
 
   return (
-    <div className="relative w-full h-32 md:h-36 mb-8 lg:mb-12 flex items-center justify-center lg:justify-start lg:pl-10 pointer-events-none">
-      <div className="relative w-32 h-32 md:w-36 md:h-36 flex items-center justify-center">
-        {CAROUSEL_IMAGES.map((src, idx) => {
-          let diff = idx - currentIndex;
-          if (diff < -2) diff += CAROUSEL_IMAGES.length;
-          if (diff > 2) diff -= CAROUSEL_IMAGES.length;
-
-          let xPercent = diff === 0 ? "0%" : diff === 1 ? "85%" : diff === -1 ? "-85%" : diff > 1 ? "170%" : "-170%";
-          let scale = diff === 0 ? 1 : 0.8;
-          let opacity = diff === 0 ? 1 : Math.abs(diff) === 1 ? 0.35 : 0;
-          let zIndex = diff === 0 ? 20 : 10;
-
-          return (
-            <motion.div
-              key={src}
-              initial={false}
-              animate={{ x: xPercent, scale, opacity, zIndex }}
-              transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
-              className="absolute w-full h-full rounded border border-white/10 overflow-hidden shadow-2xl origin-center"
-            >
-              <img src={src} className="w-full h-full object-cover" alt="Industrial Manufacturing" />
-              {diff !== 0 && <div className="absolute inset-0 bg-[#1A1A1A]/70 mix-blend-multiply"></div>}
-            </motion.div>
-          );
-        })}
-      </div>
+    <div className="w-full mb-8 flex items-end justify-start gap-2 h-52">
+      {visible.map(({ src, pos }) => (
+        <motion.div
+          key={src + pos}
+          layout
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: pos === 'center' ? 1 : 0.35,
+            scale: pos === 'center' ? 1 : 0.88,
+          }}
+          transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
+          className="relative overflow-hidden rounded flex-shrink-0"
+          style={{
+            width: pos === 'center' ? '48%' : '24%',
+            height: pos === 'center' ? '208px' : '168px',
+          }}
+        >
+          <img src={src} className="w-full h-full object-cover" alt="Industrial" />
+          {pos !== 'center' && <div className="absolute inset-0 bg-[#1A1A1A]/60" />}
+        </motion.div>
+      ))}
     </div>
   );
 }
@@ -74,33 +81,41 @@ export default function Home() {
   return (
     <div className="flex flex-col bg-white text-[var(--color-dark)] selection:bg-[var(--color-primary)] selection:text-[var(--color-dark)]">
 
-      {/* 1. Luxe Hero Section */}
+      {/* 1. Hero Section */}
       <motion.section
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-10%" }}
         transition={{ duration: 0.8 }}
-        className="pt-24 pb-16 md:pt-32 md:pb-24 px-4 sm:px-6 lg:px-8 w-full border-b border-gray-200 bg-[#1A1A1A]"
+        className="py-20 px-6 w-full border-b border-gray-800 bg-[#1A1A1A]"
       >
-        <div className="max-w-[90rem] mx-auto w-full text-white">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-end">
-            <div className="lg:col-span-8">
-              <h1 className="text-5xl sm:text-7xl lg:text-8xl font-medium tracking-tighter leading-[0.95] mb-8 lg:mb-0 text-white">
+        <div className="max-w-[1200px] mx-auto w-full text-white">
+          {/* Desktop: 2 col | Mobile: stacked (headline → images → text → CTA) */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+            {/* LEFT: Headline */}
+            <div>
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-medium tracking-tighter leading-[0.95] text-white">
                 Hire Reliable <br />
-                <span className="text-[var(--color-primary-light)] italic font-serif opacity-90">Operations &amp;</span> <br />
+                <span className="text-[var(--color-primary)] italic font-serif">Operations &amp;</span> <br />
                 Production Talent.
               </h1>
             </div>
-            <div className="lg:col-span-4 pb-2">
-              <HeroCarousel />
-              <p className="text-lg md:text-xl text-gray-200 leading-relaxed font-light mb-8 max-w-md">
+
+            {/* RIGHT: Images → Paragraph → CTA */}
+            <div className="flex flex-col items-start">
+              <HeroImageStack />
+
+              <p className="text-base md:text-lg text-gray-300 leading-relaxed font-light mb-6">
                 Helping Canadian manufacturers build dependable production, trades, and supply chain teams for over a decade.
               </p>
+
               <a href="#book" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[var(--color-primary)] text-white font-medium hover:bg-[var(--color-primary-hover)] transition-colors group text-sm uppercase tracking-widest">
                 Book a Strategy Call
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
             </div>
+
           </div>
         </div>
       </motion.section>
