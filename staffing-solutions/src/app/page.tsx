@@ -211,7 +211,7 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* 4. Contact Section - Horizontal Layout */}
+      {/* 4. Contact Section */}
       <motion.section
         id="book"
         initial={{ opacity: 0, y: 40 }}
@@ -220,49 +220,53 @@ export default function Home() {
         transition={{ duration: 0.8 }}
         className="py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-[#F7F7F7]"
       >
-        <div className="max-w-[90rem] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+        <div className="max-w-5xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
           {/* Left: Title + blurb */}
-          <div className="lg:col-span-4">
-            <h2 className="text-3xl md:text-4xl font-medium tracking-tighter leading-tight mb-4">
+          <div>
+            <h2 className="text-3xl md:text-5xl font-medium tracking-tighter leading-tight mb-4">
               Let's craft your <br />
               <span className="italic font-serif text-gray-400">hiring strategy.</span>
             </h2>
             <div className="w-10 h-[2px] bg-[var(--color-primary)] mb-4"></div>
-            <p className="text-sm text-gray-500 font-light leading-relaxed">
+            <p className="text-sm text-gray-500 font-light leading-relaxed max-w-sm">
               Send us a message and we'll discuss your current bottlenecks, high-volume needs, and how we can deliver the talent you've been missing.
             </p>
           </div>
 
-          {/* Right: Compact horizontal form */}
-          <form className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-xs font-medium mb-1 uppercase tracking-widest text-gray-500">Full Name <span className="text-red-400">*</span></label>
-              <input type="text" placeholder="Jane Smith" className="w-full border border-gray-300 px-3 py-2.5 text-sm focus:outline-none focus:border-[var(--color-primary)] bg-white" required />
-            </div>
-            <div>
-              <label className="block text-xs font-medium mb-1 uppercase tracking-widest text-gray-500">Email <span className="text-red-400">*</span></label>
-              <input type="email" placeholder="jane@company.com" className="w-full border border-gray-300 px-3 py-2.5 text-sm focus:outline-none focus:border-[var(--color-primary)] bg-white" required />
-            </div>
-            <div>
-              <label className="block text-xs font-medium mb-1 uppercase tracking-widest text-gray-500">Phone <span className="text-red-400">*</span></label>
-              <input type="tel" placeholder="(555) 123.4567" className="w-full border border-gray-300 px-3 py-2.5 text-sm focus:outline-none focus:border-[var(--color-primary)] bg-white" required />
-            </div>
-            <div>
-              <label className="block text-xs font-medium mb-1 uppercase tracking-widest text-gray-500">Subject <span className="text-red-400">*</span></label>
-              <input type="text" placeholder="What is this regarding?" className="w-full border border-gray-300 px-3 py-2.5 text-sm focus:outline-none focus:border-[var(--color-primary)] bg-white" required />
-            </div>
-            <div className="sm:col-span-2">
-              <label className="block text-xs font-medium mb-1 uppercase tracking-widest text-gray-500">Message</label>
-              <textarea placeholder="Tell us how we can help..." rows={3} className="w-full border border-gray-300 px-3 py-2.5 text-sm focus:outline-none focus:border-[var(--color-primary)] bg-white resize-none"></textarea>
-            </div>
-            <div className="sm:col-span-2 flex items-center justify-between gap-6 pt-2">
-              <p className="text-xs text-gray-400 italic">Your information is secure and will only be used to contact you.</p>
-              <button type="submit" className="shrink-0 bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] text-white font-semibold tracking-widest uppercase px-8 py-3 text-xs transition-colors">
-                Send Message
-              </button>
-            </div>
-          </form>
+          {/* Right: Form card */}
+          <div className="bg-white border border-gray-200 p-8 shadow-sm">
+            <form className="space-y-4">
+              <div>
+                <label className="block text-xs font-medium mb-1 uppercase tracking-widest text-gray-500">Full Name <span className="text-red-400">*</span></label>
+                <input type="text" placeholder="Jane Smith" className="w-full border border-gray-300 px-3 py-2.5 text-sm focus:outline-none focus:border-[var(--color-primary)] bg-gray-50" required />
+              </div>
+              <div>
+                <label className="block text-xs font-medium mb-1 uppercase tracking-widest text-gray-500">Email <span className="text-red-400">*</span></label>
+                <input type="email" placeholder="jane@company.com" className="w-full border border-gray-300 px-3 py-2.5 text-sm focus:outline-none focus:border-[var(--color-primary)] bg-gray-50" required />
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-medium mb-1 uppercase tracking-widest text-gray-500">Phone <span className="text-red-400">*</span></label>
+                  <input type="tel" placeholder="(555) 123.4567" className="w-full border border-gray-300 px-3 py-2.5 text-sm focus:outline-none focus:border-[var(--color-primary)] bg-gray-50" required />
+                </div>
+                <div>
+                  <label className="block text-xs font-medium mb-1 uppercase tracking-widest text-gray-500">Subject <span className="text-red-400">*</span></label>
+                  <input type="text" placeholder="Regarding..." className="w-full border border-gray-300 px-3 py-2.5 text-sm focus:outline-none focus:border-[var(--color-primary)] bg-gray-50" required />
+                </div>
+              </div>
+              <div>
+                <label className="block text-xs font-medium mb-1 uppercase tracking-widest text-gray-500">Message</label>
+                <textarea placeholder="Tell us how we can help..." rows={3} className="w-full border border-gray-300 px-3 py-2.5 text-sm focus:outline-none focus:border-[var(--color-primary)] bg-gray-50 resize-none"></textarea>
+              </div>
+              <div className="pt-2">
+                <button type="submit" className="w-full bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] text-white font-semibold tracking-widest uppercase py-3 text-xs transition-colors">
+                  Send Message
+                </button>
+                <p className="text-xs text-gray-400 italic mt-3 text-center">Your information is secure and will only be used to contact you.</p>
+              </div>
+            </form>
+          </div>
 
         </div>
       </motion.section>
