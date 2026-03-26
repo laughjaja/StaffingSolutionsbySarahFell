@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowRight, Briefcase, Building2, CheckCircle2, Cog, Truck, Wrench, ShieldCheck } from 'lucide-react';
+import { useState } from 'react';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -41,6 +42,47 @@ const steps = [
   'Offer negotiation and onboarding assistance through acceptance',
   '2, 4, and 8-week follow-ups to protect retention',
 ];
+
+function NewsletterForm() {
+  const [email, setEmail] = useState('');
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email) setSubmitted(true);
+  };
+
+  if (submitted) {
+    return (
+      <div className="flex flex-col items-center justify-center min-w-[240px] py-4">
+        <div className="w-10 h-10 rounded-full bg-[#C6A64A]/15 flex items-center justify-center mb-3">
+          <CheckCircle2 className="w-5 h-5 text-[#9A7E2F]" />
+        </div>
+        <p className="text-sm font-medium text-black/80">You&apos;re subscribed!</p>
+        <p className="text-xs text-black/45 mt-1">We&apos;ll be in touch soon.</p>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 w-full md:max-w-sm">
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="your@email.com"
+        required
+        className="flex-1 rounded-lg border border-black/15 bg-white/80 px-4 py-3 text-sm focus:outline-none focus:border-[#C6A64A] placeholder:text-black/35"
+      />
+      <button
+        type="submit"
+        className="inline-flex items-center justify-center gap-2 border border-[#2C3434] bg-[#2C3434] px-6 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-[#C6A64A] hover:border-[#C6A64A] rounded-lg whitespace-nowrap"
+      >
+        Subscribe
+      </button>
+    </form>
+  );
+}
 
 export default function HomePage() {
   return (
@@ -221,6 +263,30 @@ export default function HomePage() {
               </li>
             ))}
           </ol>
+        </motion.div>
+      </section>
+
+      {/* Newsletter Section */}
+      <section className="border-y border-black/10 px-6 py-14 md:py-16">
+        <motion.div
+          className="mx-auto max-w-[1200px]"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.55 }}
+        >
+          <div className="rounded-3xl border border-black/10 bg-[linear-gradient(155deg,#fdfaf2_0%,#ece5d5_47%,#dde7e2_100%)] p-8 md:p-12 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+            <div className="max-w-md">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-black/50 mb-2">Newsletter</p>
+              <h2 className="text-3xl font-medium tracking-tight md:text-4xl leading-tight">
+                Hiring insights, delivered.
+              </h2>
+              <p className="mt-3 text-sm leading-relaxed text-black/65">
+                Practical tips on skilled trades hiring, market trends, and retention strategies — straight to your inbox.
+              </p>
+            </div>
+            <NewsletterForm />
+          </div>
         </motion.div>
       </section>
 
