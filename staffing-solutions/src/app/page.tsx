@@ -75,6 +75,49 @@ function HeroImageStack() {
   );
 }
 
+function NewsletterForm() {
+  const [email, setEmail] = useState('');
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email) setSubmitted(true);
+  };
+
+  if (submitted) {
+    return (
+      <div className="flex flex-col items-center justify-center min-w-[260px] py-4">
+        <div className="w-10 h-10 rounded-full bg-[var(--color-primary)]/10 flex items-center justify-center mb-3">
+          <svg className="w-5 h-5 text-[var(--color-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        <p className="text-sm font-medium text-[var(--color-dark)]">You're subscribed!</p>
+        <p className="text-xs text-gray-400 mt-1">We'll be in touch soon.</p>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 w-full md:max-w-sm">
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="your@email.com"
+        required
+        className="flex-1 border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:border-[var(--color-primary)] bg-gray-50"
+      />
+      <button
+        type="submit"
+        className="px-6 py-3 bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] text-white text-xs font-semibold uppercase tracking-widest transition-colors whitespace-nowrap"
+      >
+        Subscribe
+      </button>
+    </form>
+  );
+}
+
 export default function Home() {
   const [mounted, setMounted] = useState(false);
 
@@ -226,6 +269,31 @@ export default function Home() {
                 <p className="text-gray-400 font-light text-xs sm:text-sm group-hover:text-white transition-colors duration-300">{step.desc}</p>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Newsletter Section */}
+      <motion.section
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-10%" }}
+        transition={{ duration: 0.8 }}
+        className="py-10 md:py-14 px-6 bg-[#F7F7F7]"
+      >
+        <div className="max-w-[1200px] mx-auto w-full">
+          <div className="border border-gray-200 bg-white p-8 md:p-12 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+            <div className="max-w-md">
+              <p className="text-xs font-mono uppercase tracking-widest text-[var(--color-primary)] mb-2">Newsletter</p>
+              <h2 className="text-3xl md:text-4xl font-medium tracking-tighter leading-tight mb-3">
+                Hiring insights, <span className="italic font-serif text-gray-400">delivered.</span>
+              </h2>
+              <p className="text-sm text-gray-500 font-light leading-relaxed">
+                Get practical tips on skilled trades hiring, market trends, and retention strategies — straight to your inbox.
+              </p>
+            </div>
+
+            <NewsletterForm />
           </div>
         </div>
       </motion.section>
